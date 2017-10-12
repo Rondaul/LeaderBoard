@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:padding="10dp"
+              tools:context="com.rondaulz.leaderboard.DatabaseDetailsFragment">
+
+    <Button
+        android:id="@+id/first_sem_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/my_button"
+        android:padding="10dp"
+        android:text="@string/first_sem"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"/>
+
+    <Button
+        android:id="@+id/second_sem_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/my_button"
+        android:padding="10dp"
+        android:text="@string/second_sem"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"/>
+
+    <Button
+        android:id="@+id/third_sem_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/my_button"
+        android:padding="10dp"
+        android:text="@string/third_sem"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"/>
+
+    <Button
+        android:id="@+id/fourth_sem_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/my_button"
+        android:padding="10dp"
+        android:text="@string/fourth_sem"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"/>
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "351208450103",
+    "firebase_url": "https://leaderboard-ce397.firebaseio.com",
+    "project_id": "leaderboard-ce397",
+    "storage_bucket": "leaderboard-ce397.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351208450103:android:280edf358dba4c85",
+        "android_client_info": {
+          "package_name": "com.rondaulz.leaderboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351208450103-rn0fu33oakm9ebnhu9m8kmboag8mqp15.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rondaulz.leaderboard",
+            "certificate_hash": "b1c75483992f045ae64fb314304f8de6b45c9476"
+          }
+        },
+        {
+          "client_id": "351208450103-3t89vf3ugvbfthft2hci1m20gsmn7prq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrHwkqherwyiu1sMQWNd0aGuvUuEtGMuw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351208450103-3t89vf3ugvbfthft2hci1m20gsmn7prq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

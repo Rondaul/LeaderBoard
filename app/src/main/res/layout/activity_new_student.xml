@@ -15,11 +15,15 @@
         app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/new_student_toolbar">
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_below="@id/new_student_toolbar"
     android:background="@color/colorPrimary"
     android:padding="@dimen/activity_horizontal_margin">
 
@@ -48,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:hint="@string/hint_password"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"/>
     </android.support.design.widget.TextInputLayout>
@@ -63,7 +67,296 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:hint="@string/hint_name"
-            android:inputType="textPassword"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_regno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Regiister No."
+            android:inputType="text"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="ID No."
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:text="Marks"
+        android:textSize="24sp"
+        android:textAllCaps="true"
+        android:background="@color/colorAccent"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_digitalElectronics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Digital Electronics"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="English"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/new_student_data_structures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:hint="Data Structures"
+                android:inputType="number"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"/>
+        </android.support.design.widget.TextInputLayout>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_dbms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="DBMS"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_cPlus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="C++"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_operating_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Operating System"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_unix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Unix"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_vb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Visual Basic"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@color/colorAccent"
+        android:text="Attendance"
+        android:textAllCaps="true"
+        android:textSize="24sp"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_at_digitalElectronics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Digital Electronics"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_at_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="English"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/new_student_at_data_structures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:hint="Data Structures"
+                android:inputType="number"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"/>
+        </android.support.design.widget.TextInputLayout>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_at_dbms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="DBMS"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_at_cPlus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="C++"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_at_operating_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Operating System"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_at_unix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Unix"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/new_student_at_vb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Visual Basic"
+            android:inputType="number"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"/>
     </android.support.design.widget.TextInputLayout>
@@ -79,6 +372,8 @@
         android:textColor="@android:color/black" />
 
 </LinearLayout>
+
+    </ScrollView>
 
     <ProgressBar
         android:id="@+id/new_student_progressBar"

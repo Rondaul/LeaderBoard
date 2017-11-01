@@ -30,11 +30,15 @@
         <activity
             android:name=".StudentDataDetailsActivity"
             android:label="Student Details"/>
-        <activity android:name=".NewStudentActivity"
+        <activity
+            android:name=".NewStudentActivity"
             android:label="Add New Student">
         </activity>
-        <activity android:name=".NewSkillsActivity"
+        <activity
+            android:name=".NewSkillsActivity"
             android:label="Add New Skills">
+        </activity>
+        <activity android:name=".UpdateStudentData">
         </activity>
     </application>
 

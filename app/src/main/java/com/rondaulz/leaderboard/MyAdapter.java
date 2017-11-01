@@ -2,13 +2,17 @@ package com.rondaulz.leaderboard;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -23,6 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
+    private FirebaseAuth mAuth;
     private Context mContext;
     private List<StudentData> studentDataList;
     private String title;
@@ -32,11 +37,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         this.mContext = mContext;
         this.studentDataList = studentDataList;
         this.title = title;
-        Log.i("Value", title);
+        mAuth = FirebaseAuth.getInstance();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
         public TextView mItemName, mItemRegNo, mItemNo, mTotal;
+        CardView mCardView;
         CircleImageView mImageView;
         Context mContext;
         List<StudentData> studentDataList;
@@ -47,11 +53,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             this.mContext = mContext;
             this.studentDataList = studentDataList;
             view.setOnClickListener(this);
+            if(mAuth.getCurrentUser().getUid().equals("CZ2vRYzd4BUGYj8TdA2TvrcNkYa2")) {
+                view.setOnLongClickListener(this);
+            }
+
             mItemName = (TextView) view.findViewById(R.id.card_name);
             mItemRegNo = (TextView) view.findViewById(R.id.card_regno);
             mItemNo = (TextView) view.findViewById(R.id.item_id);
             mImageView = (CircleImageView) view.findViewById(R.id.item_photo);
             mTotal = view.findViewById(R.id.card_total);
+            mCardView = view.findViewById(R.id.card_view);
         }
 
         @Override
@@ -74,6 +85,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             intent.putExtra("vb" , "" + studentData.getFourthSemester().getVb());
             intent.putExtra("title", title);
             this.mContext.startActivity(intent);
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            int position = getAdapterPosition();
+            StudentData studentData = this.studentDataList.get(position);
+            //creating a popup menu
+            PopupMenu popupMenu = new PopupMenu(mContext, v);
+            popupMenu.inflate(R.menu.menu_action_mode);
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch(item.getItemId()) {
+                        case R.id.id_edit:
+                            //handle edit click
+                            break;
+                        case R.id.id_delete:
+                            //handle delete click
+                            break;
+                    }
+                    return false;
+                }
+            });
+            popupMenu.show();
+            return true;
         }
     }
 
@@ -121,11 +157,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                                 });
                     }
                 });
-
     }
 
     @Override
     public int getItemCount() {
-        return studentDataList.size();
+        return (null != studentDataList ? studentDataList.size() : 0);
     }
 }

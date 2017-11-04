@@ -1,7 +1,7 @@
 package com.rondaulz.leaderboard;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -58,11 +58,6 @@ public class AttendanceFragment extends Fragment {
 
         mAttendanceRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        // specify an adapter (see also next example)
-            /*mAdapter = new MyAdapter(getContext(),mMarksList);
-            mAdapter.notifyDataSetChanged();
-            mRecyclerView.setAdapter(mAdapter);*/
-
         //get Firebase Reference
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Students").child("Attendance");
@@ -71,8 +66,6 @@ public class AttendanceFragment extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 fetchData(dataSnapshot);
-
-
             }
 
             @Override
@@ -82,7 +75,15 @@ public class AttendanceFragment extends Fragment {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                //Remove data from the ArrayList after deletion
+                String key = dataSnapshot.getKey();
+                for(StudentData studentData : mAttendanceList) {
+                    if(key.equals(studentData.getKey())) {
+                       mAttendanceList.remove(studentData);
+                        break;
+                    }
+                }
+                mAttendanceAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -98,7 +99,7 @@ public class AttendanceFragment extends Fragment {
         return view;
     }
 
-    public void findPercentage(StudentData value) {
+    public void findTotal(StudentData value) {
         total = value.getFirstSemester().getDigitalElectronics() + value.getFirstSemester().getEnglish() +value.getSecondSemester().getDataStructures()
                 + value.getSecondSemester().getDbms() + value.getThirdSemester().getcPlus() + value.getThirdSemester().getOperatingSystem() + value.getFourthSemester().getUnix()
                 + value.getFourthSemester().getVb();
@@ -108,7 +109,8 @@ public class AttendanceFragment extends Fragment {
     private void fetchData(DataSnapshot dataSnapshot) {
         StudentData value = dataSnapshot.getValue(StudentData.class);
         Log.v("StudentData Fragment", "" + dataSnapshot.getValue());
-        findPercentage(value);
+        value.setKey(dataSnapshot.getKey());
+        findTotal(value);
 
         // Get an iterator.
         Iterator<StudentData> ite = mAttendanceList.iterator();
@@ -124,7 +126,7 @@ public class AttendanceFragment extends Fragment {
         String title = mReference.getKey();
 
         // specify an adapter
-        mAttendanceAdapter = new MyAdapter(getContext(), mAttendanceList, title);
+        mAttendanceAdapter = new MyAdapter(getContext(),null, mAttendanceList, title, 1);
         mAttendanceAdapter.notifyDataSetChanged();
         mAttendanceRecyclerView.setAdapter(mAttendanceAdapter);
     }

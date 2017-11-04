@@ -38,7 +38,8 @@
             android:name=".NewSkillsActivity"
             android:label="Add New Skills">
         </activity>
-        <activity android:name=".UpdateStudentData">
+        <activity android:name=".UpdateStudentDataActivity"
+            android:label="Update Student Data">
         </activity>
     </application>
 

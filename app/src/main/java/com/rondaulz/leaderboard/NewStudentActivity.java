@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +30,6 @@ public class NewStudentActivity extends AppCompatActivity {
     private Button mAddButton;
     private ProgressBar mProgressBar;
     private Toolbar mToolbar;
-    static String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +64,8 @@ public class NewStudentActivity extends AppCompatActivity {
         mAddButton = (Button) findViewById(R.id.new_student_add_button);
         mProgressBar = (ProgressBar) findViewById(R.id.new_student_progressBar);
         mToolbar = (Toolbar) findViewById(R.id.new_student_toolbar);
-
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +92,6 @@ public class NewStudentActivity extends AppCompatActivity {
                     mNameEditText.setError("Enter the name!");
                     return;
                 }
-
                 mProgressBar.setVisibility(View.VISIBLE);
 
                 //create user
@@ -185,8 +183,6 @@ public class NewStudentActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                                     //admin sign in again
-                                                    key = mAuth.getCurrentUser().getUid();
-                                                    Log.v("UserId", mAuth.getCurrentUser().getUid());
                                                     Intent intent = new Intent(NewStudentActivity.this, AdminActivity.class);
                                                     startActivity(intent);
                                                 }
@@ -199,6 +195,13 @@ public class NewStudentActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

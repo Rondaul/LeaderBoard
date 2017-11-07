@@ -32,36 +32,6 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/edit_new_stuent_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:hint="@string/hint_email"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/edit_new_student_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:hint="@string/hint_password"
-                    android:inputType="text"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
                     android:id="@+id/edit_new_student_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

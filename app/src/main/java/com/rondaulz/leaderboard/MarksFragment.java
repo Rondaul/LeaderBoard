@@ -21,15 +21,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-
-/**
- * Created by Ron on 06-08-2017.
- */
-
 public class MarksFragment extends Fragment {
 
     private List<StudentData> mMarksList = new ArrayList<>();
-
     private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -93,14 +87,10 @@ public class MarksFragment extends Fragment {
             }
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
+            public void onCancelled(DatabaseError databaseError) { }
         });
         return view;
     }

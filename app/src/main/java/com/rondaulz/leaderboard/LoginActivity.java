@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mInputEmail, mInputPassword;
     private FirebaseAuth mAuth;
     private ProgressBar mProgressBar;
-    private Button mBtnLogin, mBtnReset;
+    private Button mBtnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         mInputPassword = (EditText) findViewById(R.id.password);
         mProgressBar = (ProgressBar) findViewById(R.id.main_progressBar);
         mBtnLogin = (Button) findViewById(R.id.student_login);
-        mBtnReset = (Button) findViewById(R.id.btn_reset_password);
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

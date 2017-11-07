@@ -360,7 +360,6 @@
                     android:textColorHint="@android:color/white"/>
             </android.support.design.widget.TextInputLayout>
 
-
             <Button
                 android:id="@+id/new_student_add_button"
                 android:layout_width="match_parent"
@@ -369,11 +368,8 @@
                 android:background="@color/colorAccent"
                 android:text="@string/btn_add"
                 android:textColor="@android:color/black"/>
-
         </LinearLayout>
-
     </ScrollView>
-
     <ProgressBar
         android:id="@+id/new_student_progressBar"
         android:layout_width="30dp"
@@ -382,5 +378,4 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:visibility="gone"/>
-
 </RelativeLayout>

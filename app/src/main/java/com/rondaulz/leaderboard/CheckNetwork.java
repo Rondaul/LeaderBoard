@@ -5,10 +5,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-/**
- * Created by Ron on 15-08-2017.
- */
-
 public class CheckNetwork {
     private static final String TAG = "Login Activity";
 

@@ -35,10 +35,6 @@
             android:label="Add New Student">
         </activity>
         <activity
-            android:name=".NewSkillsActivity"
-            android:label="Add New Skills">
-        </activity>
-        <activity
             android:name=".UpdateStudentDataActivity"
             android:label="Update Student Data">
         </activity>

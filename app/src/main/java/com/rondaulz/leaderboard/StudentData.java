@@ -44,10 +44,6 @@ public class StudentData {
         return imageId;
     }
 
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
-    }
-
     public int getId() {
         return id;
     }
@@ -69,14 +65,6 @@ public class StudentData {
         return regno;
     }
 
-    public void setRegno(String regno) {
-        this.regno = regno;
-    }
-
-    public void setFirstSemester(FirstSemester firstSemester) {
-        this.firstSemester = firstSemester;
-    }
-
     public void setSecondSemester(SecondSemester secondSemester) {
         this.secondSemester = secondSemester;
     }
@@ -85,16 +73,8 @@ public class StudentData {
         return thirdSemester;
     }
 
-    public void setThirdSemester(ThirdSemester thirdSemester) {
-        this.thirdSemester = thirdSemester;
-    }
-
     public FourthSemester getFourthSemester() {
         return fourthSemester;
-    }
-
-    public void setFourthSemester(FourthSemester fourthSemester) {
-        this.fourthSemester = fourthSemester;
     }
 
     public int getTotal() {
@@ -164,16 +144,8 @@ class FirstSemester {
         return digitalElectronics;
     }
 
-    public void setDigitalElectronics(int digitalElectronics) {
-        this.digitalElectronics = digitalElectronics;
-    }
-
     public int getEnglish() {
         return english;
-    }
-
-    public void setEnglish(int english) {
-        this.english = english;
     }
 }
 
@@ -193,16 +165,8 @@ class SecondSemester {
         return dataStructures;
     }
 
-    public void setDataStructures(int dataStructures) {
-        this.dataStructures = dataStructures;
-    }
-
     public int getDbms() {
         return dbms;
-    }
-
-    public void setDbms(int dbms) {
-        this.dbms = dbms;
     }
 }
 
@@ -222,16 +186,8 @@ class ThirdSemester {
         return cPlus;
     }
 
-    public void setcPlus(int cPlus) {
-        this.cPlus = cPlus;
-    }
-
     public int getOperatingSystem() {
         return operatingSystem;
-    }
-
-    public void setOperatingSystem(int operatingSystem) {
-        this.operatingSystem = operatingSystem;
     }
 }
 
@@ -251,16 +207,8 @@ class FourthSemester {
         return unix;
     }
 
-    public void setUnix(int unix) {
-        this.unix = unix;
-    }
-
     public int getVb() {
         return vb;
-    }
-
-    public void setVb(int vb) {
-        this.vb = vb;
     }
 }
 

@@ -3,14 +3,12 @@ package com.rondaulz.leaderboard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,7 +26,6 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student);
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
         mAuth = FirebaseAuth.getInstance();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -38,16 +35,6 @@ public class StudentActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StudentActivity.this, NewSkillsActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_up, R.anim.anim_stay);
-            }
-        });
     }
 
     @Override

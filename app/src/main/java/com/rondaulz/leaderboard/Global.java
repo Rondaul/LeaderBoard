@@ -1,9 +1,5 @@
 package com.rondaulz.leaderboard;
 
-/**
- * Created by Ron on 9/8/2017.
- */
-
 import android.app.Application;
 
 import com.squareup.picasso.OkHttpDownloader;
@@ -13,7 +9,6 @@ public class Global extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         Picasso.Builder builder = new Picasso.Builder(this);
         builder.downloader(new OkHttpDownloader(this, Integer.MAX_VALUE));
         Picasso built = builder.build();

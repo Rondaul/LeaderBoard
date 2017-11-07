@@ -10,9 +10,7 @@ public class NewStudentData {
     private ThirdSemester thirdSemester;
     private FourthSemester fourthSemester;
 
-    public NewStudentData() {
-
-    }
+    public NewStudentData() { }
 
     public NewStudentData(String name, String regno, int id, FirstSemester firstSemester,
                           SecondSemester secondSemester, ThirdSemester thirdSemester, FourthSemester fourthSemester) {
@@ -23,14 +21,6 @@ public class NewStudentData {
         this.secondSemester = secondSemester;
         this.thirdSemester = thirdSemester;
         this.fourthSemester = fourthSemester;
-    }
-
-    public String getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
     }
 
     public int getId() {
@@ -53,32 +43,13 @@ public class NewStudentData {
         return regno;
     }
 
-    public void setRegno(String regno) {
-        this.regno = regno;
-    }
-
-    public void setFirstSemester(FirstSemester firstSemester) {
-        this.firstSemester = firstSemester;
-    }
-
-    public void setSecondSemester(SecondSemester secondSemester) {
-        this.secondSemester = secondSemester;
-    }
-
     public ThirdSemester getThirdSemester() {
         return thirdSemester;
     }
 
-    public void setThirdSemester(ThirdSemester thirdSemester) {
-        this.thirdSemester = thirdSemester;
-    }
 
     public FourthSemester getFourthSemester() {
         return fourthSemester;
-    }
-
-    public void setFourthSemester(FourthSemester fourthSemester) {
-        this.fourthSemester = fourthSemester;
     }
 
     public FirstSemester getFirstSemester() {

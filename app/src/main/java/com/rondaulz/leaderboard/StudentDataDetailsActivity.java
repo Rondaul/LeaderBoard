@@ -5,12 +5,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +20,6 @@ public class StudentDataDetailsActivity extends AppCompatActivity {
     ViewPager mViewPager;
     String title;
     private List<String> marks = new ArrayList<>();
-    private static final String VALUE = "digitalElectronics";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +51,11 @@ public class StudentDataDetailsActivity extends AppCompatActivity {
         mNameText = (TextView) findViewById(R.id.details_student_name);
         mRegnoText = (TextView) findViewById(R.id.details_regno);
         mTotalText = (TextView) findViewById(R.id.details_total);
-
-        Picasso.with(this)
-                .load(getIntent().getStringExtra("img_id"))
-                .into(mImageView);
+        mImageView = (ImageView) findViewById(R.id.details_student_image);
         mNameText.setText(getIntent().getStringExtra("name"));
         mRegnoText.setText("Reg No: " + getIntent().getStringExtra("regno"));
         mTotalText.setText("Total: " + getIntent().getStringExtra("total"));
+        mImageView.setImageResource(R.drawable.aims_logo);
     }
 
     @Override
@@ -73,10 +67,8 @@ public class StudentDataDetailsActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager, List<String> marks) {
-        Log.i(VALUE, marks.get(0));
         StudentDetailsViewPagerAdapter adapter = new StudentDetailsViewPagerAdapter(getSupportFragmentManager(), marks);
         adapter.addFragment(new DatabaseDetailsFragment(), title);
-        adapter.addFragment(new SkillDetailsFragment(), "Skills & Achievements");
         viewPager.setAdapter(adapter);
     }
 }

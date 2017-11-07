@@ -29,7 +29,6 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
         mAuth = FirebaseAuth.getInstance();
         adminToolbar = (Toolbar) findViewById(R.id.admin_toolbar);
         setSupportActionBar(adminToolbar);

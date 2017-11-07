@@ -3,6 +3,7 @@ package com.rondaulz.leaderboard;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class UpdateStudentDataActivity extends AppCompatActivity {
-    private EditText mEmailEditText, mPasswordEditText, mNameEditText, mRegNoEditText, mIdEditText,
+    private EditText mNameEditText, mRegNoEditText, mIdEditText,
             mDigitalElectronicsEditText, mEnglishEditText, mDataStructuresEditText, mDbmsEditText, mCPlusEditText,
             mOperatingSystemEditText, mUnixEditText, mVbEditText, mAtDigitalElectronicsEditText, mAtEnglishEditText,
             mAtDataStructuresEditText, mAtDbmsEditText, mAtCPlusEditText,
@@ -34,8 +35,6 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
         key = getIntent().getStringExtra("key");
         mDatabase = FirebaseDatabase.getInstance();
 
-        mEmailEditText = (EditText) findViewById(R.id.edit_new_stuent_email);
-        mPasswordEditText = (EditText) findViewById(R.id.edit_new_student_password);
         mNameEditText = (EditText) findViewById(R.id.edit_new_student_name);
         mRegNoEditText = (EditText) findViewById(R.id.edit_new_student_regno);
         mIdEditText = (EditText) findViewById(R.id.edit_new_student_id);
@@ -60,8 +59,8 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
 
         mAddButton = (Button) findViewById(R.id.edit_new_student_add_button);
         mToolbar = (Toolbar) findViewById(R.id.edit_new_student_toolbar);
-
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,24 +125,16 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
 
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
+            public void onChildRemoved(DataSnapshot dataSnapshot) { }
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
+            public void onCancelled(DatabaseError databaseError) { }
         });
 
         mAtReference = mDatabase.getReference().child("Students").child("Attendance");
@@ -154,25 +145,25 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
 
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
+            public void onChildRemoved(DataSnapshot dataSnapshot) { }
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
+            public void onCancelled(DatabaseError databaseError) { }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void updateData(DataSnapshot dataSnapshot) {

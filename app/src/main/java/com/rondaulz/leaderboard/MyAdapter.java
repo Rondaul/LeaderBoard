@@ -9,7 +9,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,9 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -146,7 +142,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                             alert.setCancelable(false);
 
                             alert.setMessage("Are you sure?");
-
                             alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -193,33 +188,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.mItemRegNo.setText("Reg No: " + studentData.getRegno());
         holder.mItemNo.setText("" + count);
         holder.mTotal.setText("" + studentData.getTotal() + " out of 800");
-        Picasso.with(mContext)
-                .load(studentData.getImageId())
-                .networkPolicy(NetworkPolicy.OFFLINE)
-                .into(holder.mImageView, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                    }
-
-                    @Override
-                    public void onError() {
-                        //Try again online if cache failed
-                        Picasso.with(mContext)
-                                .load(studentData.getImageId())
-                                .error(R.drawable.aims_logo)
-                                .into(holder.mImageView, new Callback() {
-                                    @Override
-                                    public void onSuccess() {
-
-                                    }
-
-                                    @Override
-                                    public void onError() {
-                                        Log.v("Picasso", "Could not fetch image");
-                                    }
-                                });
-                    }
-                });
+        holder.mImageView.setImageResource(R.drawable.aims_logo);
     }
 
     @Override
@@ -229,7 +198,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         } else {
             return AttendanceList.size();
         }
-        //return (null != studentDataList ? studentDataList.size() : 0);
     }
 
     public void deleteRecyclerViewItem(StudentData studentData) {

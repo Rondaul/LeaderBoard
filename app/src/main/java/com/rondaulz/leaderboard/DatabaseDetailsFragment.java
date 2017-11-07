@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 public class DatabaseDetailsFragment extends Fragment {
     private Button mFirstSemButton, mSecondSemButton, mThirdSemButton, mFourthSemButton;
     private String de;
@@ -80,7 +79,6 @@ public class DatabaseDetailsFragment extends Fragment {
                 mSecond.setText("English: " + eng);
 
                 alert.setView(dialog);
-
                 alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         //Cancel alert Dialog
@@ -138,7 +136,6 @@ public class DatabaseDetailsFragment extends Fragment {
                 mSecond.setText("Operating System: " + os);
 
                 alert.setView(dialog);
-
                 alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         //Cancel alert Dialog

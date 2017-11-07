@@ -31,9 +31,7 @@ public class AttendanceFragment extends Fragment {
     private DatabaseReference mReference;
     private int total = 0;
 
-    public AttendanceFragment() {
-
-    }
+    public AttendanceFragment() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,14 +83,10 @@ public class AttendanceFragment extends Fragment {
             }
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
+            public void onCancelled(DatabaseError databaseError) { }
         });
         return view;
     }

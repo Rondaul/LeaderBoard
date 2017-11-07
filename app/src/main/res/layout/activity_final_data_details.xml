@@ -13,14 +13,13 @@
         android:id="@+id/first_mark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:padding="5dp"/>
+
     <TextView
         android:id="@+id/second_mark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_margin="10dp"/>
-
-
+        android:layout_margin="10dp"
+        android:padding="5dp"/>
 </LinearLayout>

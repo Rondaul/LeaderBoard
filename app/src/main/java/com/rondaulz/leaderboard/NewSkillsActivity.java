@@ -7,15 +7,23 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class NewSkillsActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private EditText mAddSkillsEditText;
     private ImageButton mAddSkillsButton;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_skills);
+
+        mAuth = FirebaseAuth.getInstance();
+        final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
 
         mToolbar = (Toolbar) findViewById(R.id.new_skills_toolbar);
         setSupportActionBar(mToolbar);
@@ -26,7 +34,9 @@ public class NewSkillsActivity extends AppCompatActivity {
         mAddSkillsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText editText = new EditText(NewSkillsActivity.this);
+                String skill = mAddSkillsEditText.getText().toString();
+                mRef.child("Students").child("Skill").child(mAuth.getCurrentUser().getUid()).push().setValue(skill);
+                mAddSkillsEditText.setText(null);
             }
         });
     }

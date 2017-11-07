@@ -2,10 +2,6 @@ package com.rondaulz.leaderboard;
 
 import java.util.Comparator;
 
-/**
- * Created by Ron on 06-08-2017.
- */
-
 public class StudentData {
     private String name;
     private String regno;
@@ -15,6 +11,7 @@ public class StudentData {
     private SecondSemester secondSemester;
     private ThirdSemester thirdSemester;
     private FourthSemester fourthSemester;
+    private String key;
     private int total;
 
     public StudentData() {
@@ -33,6 +30,14 @@ public class StudentData {
         this.secondSemester = secondSemester;
         this.thirdSemester = thirdSemester;
         this.fourthSemester = fourthSemester;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getImageId() {
@@ -125,7 +130,6 @@ public class StudentData {
     public SecondSemester getSecondSemester() {
         return secondSemester;
     }
-
 }
 
 class MarksComparator implements Comparator<StudentData> {
@@ -142,122 +146,121 @@ class MarksComparator implements Comparator<StudentData> {
             return 0;
         }
     }
-
 }
 
- class FirstSemester {
+class FirstSemester {
     int digitalElectronics;
-     int english;
+    int english;
 
     public FirstSemester() {
     }
 
-     public FirstSemester(int digitalElectronics, int english) {
-         this.digitalElectronics = digitalElectronics;
-         this.english = english;
-     }
+    public FirstSemester(int digitalElectronics, int english) {
+        this.digitalElectronics = digitalElectronics;
+        this.english = english;
+    }
 
-     public int getDigitalElectronics() {
-         return digitalElectronics;
-     }
+    public int getDigitalElectronics() {
+        return digitalElectronics;
+    }
 
-     public void setDigitalElectronics(int digitalElectronics) {
-         this.digitalElectronics = digitalElectronics;
-     }
+    public void setDigitalElectronics(int digitalElectronics) {
+        this.digitalElectronics = digitalElectronics;
+    }
 
-     public int getEnglish() {
-         return english;
-     }
+    public int getEnglish() {
+        return english;
+    }
 
-     public void setEnglish(int english) {
-         this.english = english;
-     }
- }
+    public void setEnglish(int english) {
+        this.english = english;
+    }
+}
 
- class SecondSemester {
+class SecondSemester {
     int dataStructures;
-     int dbms;
+    int dbms;
 
     public SecondSemester() {
     }
 
-     public SecondSemester(int dataStructures, int dbms) {
-         this.dataStructures = dataStructures;
-         this.dbms = dbms;
-     }
+    public SecondSemester(int dataStructures, int dbms) {
+        this.dataStructures = dataStructures;
+        this.dbms = dbms;
+    }
 
-     public int getDataStructures() {
-         return dataStructures;
-     }
+    public int getDataStructures() {
+        return dataStructures;
+    }
 
-     public void setDataStructures(int dataStructures) {
-         this.dataStructures = dataStructures;
-     }
+    public void setDataStructures(int dataStructures) {
+        this.dataStructures = dataStructures;
+    }
 
-     public int getDbms() {
-         return dbms;
-     }
+    public int getDbms() {
+        return dbms;
+    }
 
-     public void setDbms(int dbms) {
-         this.dbms = dbms;
-     }
- }
+    public void setDbms(int dbms) {
+        this.dbms = dbms;
+    }
+}
 
- class ThirdSemester {
-     int cPlus;
-     int operatingSystem;
+class ThirdSemester {
+    int cPlus;
+    int operatingSystem;
 
-     public ThirdSemester() {
-     }
+    public ThirdSemester() {
+    }
 
-     public ThirdSemester(int cPlus, int operatingSystem) {
-         this.cPlus = cPlus;
-         this.operatingSystem = operatingSystem;
-     }
+    public ThirdSemester(int cPlus, int operatingSystem) {
+        this.cPlus = cPlus;
+        this.operatingSystem = operatingSystem;
+    }
 
-     public int getcPlus() {
-         return cPlus;
-     }
+    public int getcPlus() {
+        return cPlus;
+    }
 
-     public void setcPlus(int cPlus) {
-         this.cPlus = cPlus;
-     }
+    public void setcPlus(int cPlus) {
+        this.cPlus = cPlus;
+    }
 
-     public int getOperatingSystem() {
-         return operatingSystem;
-     }
+    public int getOperatingSystem() {
+        return operatingSystem;
+    }
 
-     public void setOperatingSystem(int operatingSystem) {
-         this.operatingSystem = operatingSystem;
-     }
- }
+    public void setOperatingSystem(int operatingSystem) {
+        this.operatingSystem = operatingSystem;
+    }
+}
 
- class FourthSemester {
-     int unix;
-     int vb;
+class FourthSemester {
+    int unix;
+    int vb;
 
-     public FourthSemester() {
-     }
+    public FourthSemester() {
+    }
 
-     public FourthSemester(int unix, int vb) {
-         this.unix = unix;
-         this.vb = vb;
-     }
+    public FourthSemester(int unix, int vb) {
+        this.unix = unix;
+        this.vb = vb;
+    }
 
-     public int getUnix() {
-         return unix;
-     }
+    public int getUnix() {
+        return unix;
+    }
 
-     public void setUnix(int unix) {
-         this.unix = unix;
-     }
+    public void setUnix(int unix) {
+        this.unix = unix;
+    }
 
-     public int getVb() {
-         return vb;
-     }
+    public int getVb() {
+        return vb;
+    }
 
-     public void setVb(int vb) {
-         this.vb = vb;
-     }
- }
+    public void setVb(int vb) {
+        this.vb = vb;
+    }
+}
 

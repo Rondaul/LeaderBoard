@@ -52,20 +52,17 @@ public class MarksFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_marks, container, false);
 
-
         mRecyclerView = (RecyclerView) view.findViewById(R.id.marks_recycler_view);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
-
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
 
         //get Firebase Reference
         mDatabase = FirebaseDatabase.getInstance();
@@ -86,8 +83,8 @@ public class MarksFragment extends Fragment {
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 //Remove data from the ArrayList after deletion
                 String key = dataSnapshot.getKey();
-                for(StudentData studentData : mMarksList) {
-                    if(key.equals(studentData.getKey())) {
+                for (StudentData studentData : mMarksList) {
+                    if (key.equals(studentData.getKey())) {
                         mMarksList.remove(studentData);
                         break;
                     }
@@ -107,7 +104,6 @@ public class MarksFragment extends Fragment {
         });
         return view;
     }
-
 
     public void findTotal(StudentData value) {
         total = value.getFirstSemester().getDigitalElectronics() + value.getFirstSemester().getEnglish() + value.getSecondSemester().getDataStructures()
@@ -133,7 +129,6 @@ public class MarksFragment extends Fragment {
         }
         mMarksList.add(value);
         Collections.sort(mMarksList, new MarksComparator());
-
         String title = mReference.getKey();
 
         // specify an adapter

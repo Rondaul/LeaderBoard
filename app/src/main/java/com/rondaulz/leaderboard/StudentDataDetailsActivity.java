@@ -22,14 +22,13 @@ public class StudentDataDetailsActivity extends AppCompatActivity {
     TabLayout mTablayout;
     ViewPager mViewPager;
     String title;
-    private List<String> marks= new ArrayList<>();
+    private List<String> marks = new ArrayList<>();
     private static final String VALUE = "digitalElectronics";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_data_details);
-
 
         toolbar = (Toolbar) findViewById(R.id.details_toolbar);
         setSupportActionBar(toolbar);
@@ -67,7 +66,7 @@ public class StudentDataDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -80,5 +79,4 @@ public class StudentDataDetailsActivity extends AppCompatActivity {
         adapter.addFragment(new SkillDetailsFragment(), "Skills & Achievements");
         viewPager.setAdapter(adapter);
     }
-
 }

@@ -1,10 +1,12 @@
 package com.rondaulz.leaderboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,17 +22,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class NewStudentActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private EditText mEmailEditText, mPasswordEditText, mNameEditText, mRegNoEditText, mIdEditText,
-    mDigitalElectronicsEditText, mEnglishEditText, mDataStructuresEditText, mDbmsEditText, mCPlusEditText,
-    mOperatingSystemEditText, mUnixEditText, mVbEditText, mAtDigitalElectronicsEditText, mAtEnglishEditText,
+            mDigitalElectronicsEditText, mEnglishEditText, mDataStructuresEditText, mDbmsEditText, mCPlusEditText,
+            mOperatingSystemEditText, mUnixEditText, mVbEditText, mAtDigitalElectronicsEditText, mAtEnglishEditText,
             mAtDataStructuresEditText, mAtDbmsEditText, mAtCPlusEditText,
             mAtOperatingSystemEditText, mAtUnixEditText, mAtVbEditText;
     private Button mAddButton;
     private ProgressBar mProgressBar;
     private Toolbar mToolbar;
-
-    private static final String TAG = ".NewStudentActivity";
+    static String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,9 @@ public class NewStudentActivity extends AppCompatActivity {
         mEmailEditText = (EditText) findViewById(R.id.new_stuent_email);
         mPasswordEditText = (EditText) findViewById(R.id.new_student_password);
         mNameEditText = (EditText) findViewById(R.id.new_student_name);
-        mRegNoEditText= (EditText) findViewById(R.id.new_student_regno);
-        mIdEditText= (EditText) findViewById(R.id.new_student_id);
-        mDigitalElectronicsEditText=(EditText) findViewById(R.id.new_student_digitalElectronics);
+        mRegNoEditText = (EditText) findViewById(R.id.new_student_regno);
+        mIdEditText = (EditText) findViewById(R.id.new_student_id);
+        mDigitalElectronicsEditText = (EditText) findViewById(R.id.new_student_digitalElectronics);
         mEnglishEditText = (EditText) findViewById(R.id.new_student_english);
         mDataStructuresEditText = (EditText) findViewById(R.id.new_student_data_structures);
         mDbmsEditText = (EditText) findViewById(R.id.new_student_dbms);
@@ -53,7 +53,7 @@ public class NewStudentActivity extends AppCompatActivity {
         mVbEditText = (EditText) findViewById(R.id.new_student_vb);
 
         //Initializing the EditText for attendance
-        mAtDigitalElectronicsEditText=(EditText) findViewById(R.id.new_student_at_digitalElectronics);
+        mAtDigitalElectronicsEditText = (EditText) findViewById(R.id.new_student_at_digitalElectronics);
         mAtEnglishEditText = (EditText) findViewById(R.id.new_student_at_english);
         mAtDataStructuresEditText = (EditText) findViewById(R.id.new_student_at_data_structures);
         mAtDbmsEditText = (EditText) findViewById(R.id.new_student_at_dbms);
@@ -64,7 +64,7 @@ public class NewStudentActivity extends AppCompatActivity {
 
         mAddButton = (Button) findViewById(R.id.new_student_add_button);
         mProgressBar = (ProgressBar) findViewById(R.id.new_student_progressBar);
-        mToolbar =(Toolbar) findViewById(R.id.new_student_toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.new_student_toolbar);
 
         setSupportActionBar(mToolbar);
 
@@ -89,7 +89,7 @@ public class NewStudentActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(mNameEditText.getText() == null) {
+                if (mNameEditText.getText() == null) {
                     mNameEditText.setError("Enter the name!");
                     return;
                 }
@@ -106,13 +106,13 @@ public class NewStudentActivity extends AppCompatActivity {
                                 // signed in user can be handled in the listener.
                                 if (task.isSuccessful()) {
                                     Toast.makeText(NewStudentActivity.this, "User added Successfully", Toast.LENGTH_SHORT).show();
-                                            mProgressBar.setVisibility(View.GONE);
+                                    mProgressBar.setVisibility(View.GONE);
                                     String UserId = mAuth.getCurrentUser().getUid();
                                     String name = mNameEditText.getText().toString();
                                     String regNo = mRegNoEditText.getText().toString();
 
                                     //Get the value of marks from editText
-                                    int id =Integer.parseInt(mIdEditText.getText().toString());
+                                    int id = Integer.parseInt(mIdEditText.getText().toString());
                                     int digitalElectronics = Integer.parseInt(mDigitalElectronicsEditText.getText().toString());
                                     int english = Integer.parseInt(mEnglishEditText.getText().toString());
                                     int dataStructures = Integer.parseInt(mDataStructuresEditText.getText().toString());
@@ -135,13 +135,13 @@ public class NewStudentActivity extends AppCompatActivity {
                                     DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
 
                                     //Semester values for marks
-                                    FirstSemester firstSemester = new FirstSemester(digitalElectronics,english);
+                                    FirstSemester firstSemester = new FirstSemester(digitalElectronics, english);
                                     SecondSemester secondSemester = new SecondSemester(dataStructures, dbms);
                                     ThirdSemester thirdSemester = new ThirdSemester(cPlus, operatingSystem);
                                     FourthSemester fourthSemester = new FourthSemester(unix, vb);
 
                                     //Semester values for attendance
-                                    FirstSemester atFirstSemester = new FirstSemester(atDigitalElectronics,atEnglish);
+                                    FirstSemester atFirstSemester = new FirstSemester(atDigitalElectronics, atEnglish);
                                     SecondSemester atSecondSemester = new SecondSemester(atDataStructures, atDbms);
                                     ThirdSemester atThirdSemester = new ThirdSemester(atCPlus, atOperatingSystem);
                                     FourthSemester atFourthSemester = new FourthSemester(atUnix, atVb);
@@ -155,7 +155,7 @@ public class NewStudentActivity extends AppCompatActivity {
                                     mRef.child("Students").child("Marks").child(UserId).setValue(newStudent);
                                     mRef.child("Students").child("Attendance").child(UserId).setValue(newAtStudent);
 
-                                   //If user added successfully, remove the value from all editText
+                                    //If user added successfully, remove the value from all editText
                                     mEmailEditText.setText(null);
                                     mPasswordEditText.setText(null);
                                     mNameEditText.setText(null);
@@ -180,17 +180,20 @@ public class NewStudentActivity extends AppCompatActivity {
                                     mAtVbEditText.setText(null);
 
                                     mAuth.signOut();
-                                    mAuth.signInWithEmailAndPassword("ronxdaulz@gmail.com","15sksb7059")
+                                    mAuth.signInWithEmailAndPassword("ronxdaulz@gmail.com", "15sksb7059")
                                             .addOnCompleteListener(NewStudentActivity.this, new OnCompleteListener<AuthResult>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                                     //admin sign in again
+                                                    key = mAuth.getCurrentUser().getUid();
+                                                    Log.v("UserId", mAuth.getCurrentUser().getUid());
+                                                    Intent intent = new Intent(NewStudentActivity.this, AdminActivity.class);
+                                                    startActivity(intent);
                                                 }
                                             });
                                 } else {
                                     Toast.makeText(NewStudentActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
-
                                 }
                             }
                         });
@@ -198,9 +201,8 @@ public class NewStudentActivity extends AppCompatActivity {
         });
     }
 
-        @Override
-    protected void onPause()
-    {
+    @Override
+    protected void onPause() {
         super.onPause();
         overridePendingTransition(R.anim.anim_stay, R.anim.slide_out_down);
     }

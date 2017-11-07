@@ -30,10 +30,6 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * Created by Ron on 06-08-2017.
- */
-
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private FirebaseAuth mAuth;
@@ -48,8 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private String key;
     private FirebaseUser mUser;
 
-
-    public MyAdapter(Context mContext, List<StudentData> MarksList,List<StudentData> AttendanceList, String title, int number) {
+    public MyAdapter(Context mContext, List<StudentData> MarksList, List<StudentData> AttendanceList, String title, int number) {
         this.mContext = mContext;
         this.MarksList = MarksList;
         this.AttendanceList = AttendanceList;
@@ -59,12 +54,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         mUser = mAuth.getCurrentUser();
         mReference = FirebaseDatabase.getInstance().getReference();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        if(mUser != null) {
-                    uid = mUser.getUid();
-                }
+        if (mUser != null) {
+            uid = mUser.getUid();
+        }
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         public TextView mItemName, mItemRegNo, mItemNo, mTotal;
         CardView mCardView;
         CircleImageView mImageView;
@@ -74,7 +69,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         int number;
         StudentData studentData;
 
-
         public MyViewHolder(View view, Context mContext, List<StudentData> MarksList, List<StudentData> AttendanceList, int number) {
             super(view);
             this.mContext = mContext;
@@ -82,7 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             this.AttendanceList = AttendanceList;
             this.number = number;
             view.setOnClickListener(this);
-            if(mUser != null) {
+            if (mUser != null) {
                 if (uid.equals("CZ2vRYzd4BUGYj8TdA2TvrcNkYa2")) {
                     view.setOnLongClickListener(this);
                 }
@@ -100,10 +94,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public void onClick(View view) {
             int position = getAdapterPosition();
             StudentData studentData;
-            if(number == 0) {
+            if (number == 0) {
                 studentData = this.MarksList.get(position);
-            }
-            else {
+            } else {
                 studentData = this.AttendanceList.get(position);
             }
             Intent intent = new Intent(mContext, StudentDataDetailsActivity.class);
@@ -114,12 +107,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
             intent.putExtra("DE", "" + studentData.getFirstSemester().getDigitalElectronics());
             intent.putExtra("Eng", "" + studentData.getFirstSemester().getEnglish());
-            intent.putExtra("DS" , "" + studentData.getSecondSemester().getDataStructures());
+            intent.putExtra("DS", "" + studentData.getSecondSemester().getDataStructures());
             intent.putExtra("dbms", "" + studentData.getSecondSemester().getDbms());
-            intent.putExtra("CPlus" , "" + studentData.getThirdSemester().getcPlus());
-            intent.putExtra("OS" , "" + studentData.getThirdSemester().getOperatingSystem());
-            intent.putExtra("unix" , "" + studentData.getFourthSemester().getUnix());
-            intent.putExtra("vb" , "" + studentData.getFourthSemester().getVb());
+            intent.putExtra("CPlus", "" + studentData.getThirdSemester().getcPlus());
+            intent.putExtra("OS", "" + studentData.getThirdSemester().getOperatingSystem());
+            intent.putExtra("unix", "" + studentData.getFourthSemester().getUnix());
+            intent.putExtra("vb", "" + studentData.getFourthSemester().getVb());
             intent.putExtra("title", title);
             this.mContext.startActivity(intent);
         }
@@ -127,10 +120,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         @Override
         public boolean onLongClick(View v) {
             int position = getAdapterPosition();
-            if(number == 0) {
+            if (number == 0) {
                 studentData = this.MarksList.get(position);
-            }
-            else {
+            } else {
                 studentData = this.AttendanceList.get(position);
             }
             //creating a popup menu
@@ -139,13 +131,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
-                    switch(item.getItemId()) {
+                    switch (item.getItemId()) {
                         case R.id.id_edit:
                             //handle edit click
                             Intent intent = getIntent(studentData);
                             mContext.startActivity(intent);
-
-
                             break;
                         case R.id.id_delete:
                             //handle delete click
@@ -162,7 +152,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                                 public void onClick(DialogInterface dialog, int which) {
                                     //Cancel delete
                                 }
-                            }) ;
+                            });
 
                             alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
@@ -187,31 +177,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_item, parent, false);
-
         return new MyViewHolder(itemView, mContext, MarksList, AttendanceList, number);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final StudentData studentData;
-        if(number == 0) {
-             studentData = MarksList.get(position);
-        }
-        else {
+        if (number == 0) {
+            studentData = MarksList.get(position);
+        } else {
             studentData = AttendanceList.get(position);
         }
         int count = position + 1;
         holder.mItemName.setText("" + studentData.getName());
         holder.mItemRegNo.setText("Reg No: " + studentData.getRegno());
         holder.mItemNo.setText("" + count);
-        holder.mTotal.setText(""+ studentData.getTotal() + " out of 800");
+        holder.mTotal.setText("" + studentData.getTotal() + " out of 800");
         Picasso.with(mContext)
                 .load(studentData.getImageId())
                 .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(holder.mImageView, new Callback() {
                     @Override
                     public void onSuccess() {
-
                     }
 
                     @Override
@@ -219,7 +206,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                         //Try again online if cache failed
                         Picasso.with(mContext)
                                 .load(studentData.getImageId())
-                                .error(R.drawable.android_party)
+                                .error(R.drawable.aims_logo)
                                 .into(holder.mImageView, new Callback() {
                                     @Override
                                     public void onSuccess() {
@@ -228,7 +215,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                                     @Override
                                     public void onError() {
-                                        Log.v("Picasso","Could not fetch image");
+                                        Log.v("Picasso", "Could not fetch image");
                                     }
                                 });
                     }
@@ -237,10 +224,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        if(number == 0) {
+        if (number == 0) {
             return MarksList.size();
-        }
-        else{
+        } else {
             return AttendanceList.size();
         }
         //return (null != studentDataList ? studentDataList.size() : 0);
@@ -252,7 +238,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 //Delete successfull then delete attendance node
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
                     mDatabaseReference.child("Students").child("Attendance").child(key).removeValue().addOnCompleteListener(
                             new OnCompleteListener<Void>() {
                                 @Override
@@ -269,21 +255,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public Intent getIntent(StudentData studentData) {
         Intent intent = new Intent(mContext, UpdateStudentDataActivity.class);
-        intent.putExtra("img_id", studentData.getImageId());
-        intent.putExtra("name", studentData.getName());
-        intent.putExtra("regno", studentData.getRegno());
-        intent.putExtra("total", "" + studentData.getTotal());
-        intent.putExtra("key" , "" + studentData.getKey());
-
-        intent.putExtra("DE", "" + studentData.getFirstSemester().getDigitalElectronics());
-        intent.putExtra("Eng", "" + studentData.getFirstSemester().getEnglish());
-        intent.putExtra("DS" , "" + studentData.getSecondSemester().getDataStructures());
-        intent.putExtra("dbms", "" + studentData.getSecondSemester().getDbms());
-        intent.putExtra("CPlus" , "" + studentData.getThirdSemester().getcPlus());
-        intent.putExtra("OS" , "" + studentData.getThirdSemester().getOperatingSystem());
-        intent.putExtra("unix" , "" + studentData.getFourthSemester().getUnix());
-        intent.putExtra("vb" , "" + studentData.getFourthSemester().getVb());
-        intent.putExtra("title", title);
+        intent.putExtra("key", "" + studentData.getKey());
         return intent;
     }
 }

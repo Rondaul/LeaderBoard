@@ -29,7 +29,7 @@ public class StudentActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
-        mAuth= FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -40,15 +40,12 @@ public class StudentActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StudentActivity.this, NewSkillsActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_up, R.anim.anim_stay);
-
             }
         });
     }
@@ -81,7 +78,6 @@ public class StudentActivity extends AppCompatActivity {
                         startActivity(new Intent(StudentActivity.this, LoginActivity.class));
                         overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         finish();
-
                     }
                 }
             };

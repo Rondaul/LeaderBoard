@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".UpdateStudentDataActivity">
 
     <android.support.v7.widget.Toolbar
@@ -13,7 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,8 +23,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:background="@color/colorPrimary"
+            android:orientation="vertical"
             android:padding="@dimen/activity_horizontal_margin">
 
             <android.support.design.widget.TextInputLayout
@@ -106,11 +106,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
                 android:padding="8dp"
                 android:text="Marks"
-                android:textSize="24sp"
                 android:textAllCaps="true"
-                android:background="@color/colorAccent"/>
+                android:textSize="24sp"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -235,8 +235,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:background="@color/colorAccent"
+                android:padding="8dp"
                 android:text="Attendance"
                 android:textAllCaps="true"
                 android:textSize="24sp"/>
@@ -361,7 +361,6 @@
                     android:textColorHint="@android:color/white"/>
             </android.support.design.widget.TextInputLayout>
 
-
             <Button
                 android:id="@+id/edit_new_student_add_button"
                 android:layout_width="match_parent"
@@ -369,19 +368,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@color/colorAccent"
                 android:text="@string/btn_add"
-                android:textColor="@android:color/black" />
-
+                android:textColor="@android:color/black"/>
         </LinearLayout>
-
     </ScrollView>
-
-    <ProgressBar
-        android:id="@+id/edit_new_student_progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
-
 </RelativeLayout>

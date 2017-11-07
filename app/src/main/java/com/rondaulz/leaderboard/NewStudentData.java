@@ -1,9 +1,5 @@
 package com.rondaulz.leaderboard;
 
-/**
- * Created by Ron on 10/10/2017.
- */
-
 public class NewStudentData {
     private String name;
     private String regno;
@@ -13,7 +9,6 @@ public class NewStudentData {
     private SecondSemester secondSemester;
     private ThirdSemester thirdSemester;
     private FourthSemester fourthSemester;
-    private int total;
 
     public NewStudentData() {
 
@@ -45,7 +40,6 @@ public class NewStudentData {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getName() {
         return name;

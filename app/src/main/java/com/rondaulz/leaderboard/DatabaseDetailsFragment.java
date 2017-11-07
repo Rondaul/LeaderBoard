@@ -41,7 +41,7 @@ public class DatabaseDetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bundle = getArguments();
-        if(bundle != null) {
+        if (bundle != null) {
             de = bundle.getString(DIG);
             eng = bundle.getString(ENG);
             ds = bundle.getString(DS);
@@ -56,9 +56,7 @@ public class DatabaseDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_database_details, container, false);
-
 
         mFirstSemButton = (Button) view.findViewById(R.id.first_sem_button);
         mSecondSemButton = view.findViewById(R.id.second_sem_button);
@@ -69,7 +67,6 @@ public class DatabaseDetailsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-
                 LayoutInflater dataInflater = getActivity().getLayoutInflater();
                 alert.setTitle("First Semester");
                 alert.setCancelable(false);
@@ -99,7 +96,6 @@ public class DatabaseDetailsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-
                 LayoutInflater dataInflater = getActivity().getLayoutInflater();
                 alert.setTitle("Second Semester");
                 alert.setCancelable(false);
@@ -113,7 +109,6 @@ public class DatabaseDetailsFragment extends Fragment {
                 mSecond.setText("Database Management System: " + dbms);
 
                 alert.setView(dialog);
-
                 alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         //Cancel alert Dialog

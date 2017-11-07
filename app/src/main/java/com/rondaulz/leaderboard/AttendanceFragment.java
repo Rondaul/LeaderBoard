@@ -29,7 +29,7 @@ public class AttendanceFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
-    private int total=0;
+    private int total = 0;
 
     public AttendanceFragment() {
 
@@ -39,12 +39,12 @@ public class AttendanceFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_attendance, container, false);
-
 
         mAttendanceRecyclerView = (RecyclerView) view.findViewById(R.id.attendance_recycler_view);
 
@@ -55,13 +55,11 @@ public class AttendanceFragment extends Fragment {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getActivity());
         mAttendanceRecyclerView.setLayoutManager(mLayoutManager);
-
         mAttendanceRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //get Firebase Reference
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Students").child("Attendance");
-
         mReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -77,9 +75,9 @@ public class AttendanceFragment extends Fragment {
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 //Remove data from the ArrayList after deletion
                 String key = dataSnapshot.getKey();
-                for(StudentData studentData : mAttendanceList) {
-                    if(key.equals(studentData.getKey())) {
-                       mAttendanceList.remove(studentData);
+                for (StudentData studentData : mAttendanceList) {
+                    if (key.equals(studentData.getKey())) {
+                        mAttendanceList.remove(studentData);
                         break;
                     }
                 }
@@ -100,7 +98,7 @@ public class AttendanceFragment extends Fragment {
     }
 
     public void findTotal(StudentData value) {
-        total = value.getFirstSemester().getDigitalElectronics() + value.getFirstSemester().getEnglish() +value.getSecondSemester().getDataStructures()
+        total = value.getFirstSemester().getDigitalElectronics() + value.getFirstSemester().getEnglish() + value.getSecondSemester().getDataStructures()
                 + value.getSecondSemester().getDbms() + value.getThirdSemester().getcPlus() + value.getThirdSemester().getOperatingSystem() + value.getFourthSemester().getUnix()
                 + value.getFourthSemester().getVb();
         value.setTotal(total);
@@ -126,8 +124,8 @@ public class AttendanceFragment extends Fragment {
         String title = mReference.getKey();
 
         // specify an adapter
-        mAttendanceAdapter = new MyAdapter(getContext(),null, mAttendanceList, title, 1);
+        mAttendanceAdapter = new MyAdapter(getContext(), null, mAttendanceList, title, 1);
         mAttendanceAdapter.notifyDataSetChanged();
         mAttendanceRecyclerView.setAdapter(mAttendanceAdapter);
     }
-    }
+}

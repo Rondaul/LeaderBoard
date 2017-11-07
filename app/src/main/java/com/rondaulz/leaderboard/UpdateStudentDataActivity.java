@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -21,14 +21,11 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
             mAtDataStructuresEditText, mAtDbmsEditText, mAtCPlusEditText,
             mAtOperatingSystemEditText, mAtUnixEditText, mAtVbEditText;
     private Button mAddButton;
-    private ProgressBar mProgressBar;
     private Toolbar mToolbar;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private DatabaseReference mAtReference;
     private String key;
-
-    private static final String TAG = ".NewStudentActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +37,9 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
         mEmailEditText = (EditText) findViewById(R.id.edit_new_stuent_email);
         mPasswordEditText = (EditText) findViewById(R.id.edit_new_student_password);
         mNameEditText = (EditText) findViewById(R.id.edit_new_student_name);
-        mRegNoEditText= (EditText) findViewById(R.id.edit_new_student_regno);
-        mIdEditText= (EditText) findViewById(R.id.edit_new_student_id);
-        mDigitalElectronicsEditText=(EditText) findViewById(R.id.edit_new_student_digitalElectronics);
+        mRegNoEditText = (EditText) findViewById(R.id.edit_new_student_regno);
+        mIdEditText = (EditText) findViewById(R.id.edit_new_student_id);
+        mDigitalElectronicsEditText = (EditText) findViewById(R.id.edit_new_student_digitalElectronics);
         mEnglishEditText = (EditText) findViewById(R.id.edit_new_student_english);
         mDataStructuresEditText = (EditText) findViewById(R.id.edit_new_student_data_structures);
         mDbmsEditText = (EditText) findViewById(R.id.edit_new_student_dbms);
@@ -52,7 +49,7 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
         mVbEditText = (EditText) findViewById(R.id.edit_new_student_vb);
 
         //Initializing the EditText for attendance
-        mAtDigitalElectronicsEditText=(EditText) findViewById(R.id.edit_new_student_at_digitalElectronics);
+        mAtDigitalElectronicsEditText = (EditText) findViewById(R.id.edit_new_student_at_digitalElectronics);
         mAtEnglishEditText = (EditText) findViewById(R.id.edit_new_student_at_english);
         mAtDataStructuresEditText = (EditText) findViewById(R.id.edit_new_student_at_data_structures);
         mAtDbmsEditText = (EditText) findViewById(R.id.edit_new_student_at_dbms);
@@ -62,8 +59,7 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
         mAtVbEditText = (EditText) findViewById(R.id.edit_new_student_at_vb);
 
         mAddButton = (Button) findViewById(R.id.edit_new_student_add_button);
-        mProgressBar = (ProgressBar) findViewById(R.id.edit_new_student_progressBar);
-        mToolbar =(Toolbar) findViewById(R.id.edit_new_student_toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.edit_new_student_toolbar);
 
         setSupportActionBar(mToolbar);
 
@@ -74,7 +70,7 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
                 String regNo = mRegNoEditText.getText().toString();
 
                 //Get the value of marks from editText
-                int id =Integer.parseInt(mIdEditText.getText().toString());
+                int id = Integer.parseInt(mIdEditText.getText().toString());
                 int digitalElectronics = Integer.parseInt(mDigitalElectronicsEditText.getText().toString());
                 int english = Integer.parseInt(mEnglishEditText.getText().toString());
                 int dataStructures = Integer.parseInt(mDataStructuresEditText.getText().toString());
@@ -97,13 +93,13 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
                 DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
 
                 //Semester values for marks
-                FirstSemester firstSemester = new FirstSemester(digitalElectronics,english);
+                FirstSemester firstSemester = new FirstSemester(digitalElectronics, english);
                 SecondSemester secondSemester = new SecondSemester(dataStructures, dbms);
                 ThirdSemester thirdSemester = new ThirdSemester(cPlus, operatingSystem);
                 FourthSemester fourthSemester = new FourthSemester(unix, vb);
 
                 //Semester values for attendance
-                FirstSemester atFirstSemester = new FirstSemester(atDigitalElectronics,atEnglish);
+                FirstSemester atFirstSemester = new FirstSemester(atDigitalElectronics, atEnglish);
                 SecondSemester atSecondSemester = new SecondSemester(atDataStructures, atDbms);
                 ThirdSemester atThirdSemester = new ThirdSemester(atCPlus, atOperatingSystem);
                 FourthSemester atFourthSemester = new FourthSemester(atUnix, atVb);
@@ -116,6 +112,8 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
 
                 mRef.child("Students").child("Marks").child(key).setValue(newStudent);
                 mRef.child("Students").child("Attendance").child(key).setValue(newAtStudent);
+                Toast.makeText(UpdateStudentDataActivity.this, "Student details updated successfully",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -148,11 +146,11 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
             }
         });
 
-       mAtReference = mDatabase.getReference().child("Students").child("Attendance");
+        mAtReference = mDatabase.getReference().child("Students").child("Attendance");
         mAtReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-               updateAtData(dataSnapshot);
+                updateAtData(dataSnapshot);
             }
 
             @Override
@@ -180,26 +178,26 @@ public class UpdateStudentDataActivity extends AppCompatActivity {
     public void updateData(DataSnapshot dataSnapshot) {
         StudentData studentData = dataSnapshot.getValue(StudentData.class);
         studentData.setKey(dataSnapshot.getKey());
-                //set up all edit text
-                    if(key.equals(studentData.getKey())) {
-                    mNameEditText.setText(studentData.getName());
-                    mRegNoEditText.setText(studentData.getRegno());
-                    mIdEditText.setText("" + studentData.getId());
-                    mDigitalElectronicsEditText.setText("" + studentData.getFirstSemester().getDigitalElectronics());
-                    mEnglishEditText.setText("" +studentData.getFirstSemester().getEnglish());
-                    mDataStructuresEditText.setText("" + studentData.getSecondSemester().getDataStructures());
-                    mDbmsEditText.setText("" + studentData.getSecondSemester().getDbms());
-                    mCPlusEditText.setText("" + studentData.getThirdSemester().getcPlus());
-                    mOperatingSystemEditText.setText("" + studentData.getThirdSemester().getOperatingSystem());
-                    mUnixEditText.setText("" + studentData.getFourthSemester().getUnix());
-                    mVbEditText.setText("" + studentData.getFourthSemester().getVb());
-            }
+        //set up all edit text
+        if (key.equals(studentData.getKey())) {
+            mNameEditText.setText(studentData.getName());
+            mRegNoEditText.setText(studentData.getRegno());
+            mIdEditText.setText("" + studentData.getId());
+            mDigitalElectronicsEditText.setText("" + studentData.getFirstSemester().getDigitalElectronics());
+            mEnglishEditText.setText("" + studentData.getFirstSemester().getEnglish());
+            mDataStructuresEditText.setText("" + studentData.getSecondSemester().getDataStructures());
+            mDbmsEditText.setText("" + studentData.getSecondSemester().getDbms());
+            mCPlusEditText.setText("" + studentData.getThirdSemester().getcPlus());
+            mOperatingSystemEditText.setText("" + studentData.getThirdSemester().getOperatingSystem());
+            mUnixEditText.setText("" + studentData.getFourthSemester().getUnix());
+            mVbEditText.setText("" + studentData.getFourthSemester().getVb());
+        }
     }
 
     public void updateAtData(DataSnapshot dataSnapshot) {
         StudentData studentData = dataSnapshot.getValue(StudentData.class);
         studentData.setKey(dataSnapshot.getKey());
-        if(key.equals(studentData.getKey())) {
+        if (key.equals(studentData.getKey())) {
             //set up all edit text
             mAtDigitalElectronicsEditText.setText("" + studentData.getFirstSemester().getDigitalElectronics());
             mAtEnglishEditText.setText("" + studentData.getFirstSemester().getEnglish());

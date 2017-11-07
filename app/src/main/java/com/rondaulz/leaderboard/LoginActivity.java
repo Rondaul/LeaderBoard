@@ -25,28 +25,23 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private Button mBtnLogin, mBtnReset;
 
-    private FirebaseAuth.AuthStateListener mAuthListener;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         //Get Firebase Instance
         mAuth = FirebaseAuth.getInstance();
 
         if (mAuth.getCurrentUser() != null) {
-            if(mAuth.getCurrentUser().getUid().equals("CZ2vRYzd4BUGYj8TdA2TvrcNkYa2")) {
+            if (mAuth.getCurrentUser().getUid().equals("CZ2vRYzd4BUGYj8TdA2TvrcNkYa2")) {
                 startActivity(new Intent(LoginActivity.this, AdminActivity.class));
                 finish();
-            }else {
+            } else {
                 startActivity(new Intent(LoginActivity.this, StudentActivity.class));
                 finish();
             }
         }
-
         setContentView(R.layout.activity_login);
-
 
         mInputEmail = (EditText) findViewById(R.id.email);
         mInputPassword = (EditText) findViewById(R.id.password);
@@ -59,18 +54,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = mInputEmail.getText().toString();
                 final String password = mInputPassword.getText().toString();
-                if(CheckNetwork.isInternetAvailable(LoginActivity.this)) //returns true if internet available
+                if (CheckNetwork.isInternetAvailable(LoginActivity.this)) //returns true if internet available
                 {
                     if (TextUtils.isEmpty(email)) {
                         Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                         return;
                     }
-
                     if (TextUtils.isEmpty(password)) {
                         Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
                         return;
                     }
-
                     mProgressBar.setVisibility(View.VISIBLE);
 
                     //authenticate user
@@ -103,10 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-
-                }
-                else
-                {
+                } else {
                     try {
                         AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
 
@@ -116,18 +106,13 @@ public class LoginActivity extends AppCompatActivity {
                         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int n) {
                                 dialog.cancel();
-
                             }
                         });
-
                         alertDialog.show();
-                    }
-                    catch(Exception e)
-                    {
+                    } catch (Exception e) {
                         //Log.d(Constants.TAG, "Show Dialog: "+e.getMessage());
                     }
                 }
-
             }
         });
     }

@@ -8,10 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ron on 9/18/2017.
- */
-
 class StudentDetailsViewPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -49,7 +45,6 @@ class StudentDetailsViewPagerAdapter extends FragmentPagerAdapter {
                 return mMarksDetails;
             case 1:
                 return new SkillDetailsFragment();
-
         }
         return mFragmentList.get(position);
     }

@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AdminActivity extends AppCompatActivity {
+    private static ViewPagerAdapter adapter;
     private FirebaseAuth mAuth;
     private Toolbar adminToolbar;
     private TabLayout adminTabLayout;
@@ -29,7 +30,7 @@ public class AdminActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
-        mAuth= FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         adminToolbar = (Toolbar) findViewById(R.id.admin_toolbar);
         setSupportActionBar(adminToolbar);
 
@@ -40,8 +41,6 @@ public class AdminActivity extends AppCompatActivity {
         adminTabLayout.setupWithViewPager(adminViewPager);
 
         FloatingActionButton adminfab = (FloatingActionButton) findViewById(R.id.admin_fab);
-
-
         adminfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,19 +79,18 @@ public class AdminActivity extends AppCompatActivity {
                         startActivity(new Intent(AdminActivity.this, LoginActivity.class));
                         overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         finish();
-
                     }
                 }
             };
             FirebaseAuth.getInstance().addAuthStateListener(authListener);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+    //Setting View Pager
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new MarksFragment(), "MARKS");
         adapter.addFragment(new AttendanceFragment(), "ATTENDANCE");
         viewPager.setAdapter(adapter);

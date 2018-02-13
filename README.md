@@ -5,7 +5,8 @@ It uses Firebase as backend server.
 The student has to be added by the admin inorder to login to the app. Once login he/she can view his/her marks of previous
 semester and able see other student's marks and see who is at the topper in the class.
 
-Technologies used: Android and Firebase.
+# Technologies used: 
+Android and Firebase.
 
 # Future initiatives:
 
